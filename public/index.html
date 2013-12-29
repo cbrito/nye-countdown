@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year's Eve Countdown'</title>
+    <meta name="description" content="New years Eve countdown timer for local timezones.">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="assets/js/jquery.lwtCountdown-1.0.js"></script>
+    <link rel="Stylesheet" type="text/css" href="assets/css/dark.css" />
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <header>
+      
+    </header>
+    <main role="main">
+      <div class="container">
+        <div class="content">
+           <div class="row">
+            <div class="col-md-12">
+                
+                
+                <div id="container">
+
+
+            		<!-- Countdown dashboard start -->
+            		<div id="countdown_dashboard">
+            			<div class="dash weeks_dash">
+            				<span class="dash_title">weeks</span>
+            				<div class="digit">0</div>
+            				<div class="digit">0</div>
+            			</div>
+
+            			<div class="dash days_dash">
+            				<span class="dash_title">days</span>
+            				<div class="digit">0</div>
+            				<div class="digit">0</div>
+            			</div>
+
+            			<div class="dash hours_dash">
+            				<span class="dash_title">hours</span>
+            				<div class="digit">0</div>
+            				<div class="digit">0</div>
+            			</div>
+
+            			<div class="dash minutes_dash">
+            				<span class="dash_title">minutes</span>
+            				<div class="digit">0</div>
+            				<div class="digit">0</div>
+            			</div>
+
+            			<div class="dash seconds_dash">
+            				<span class="dash_title">seconds</span>
+            				<div class="digit">0</div>
+            				<div class="digit">0</div>
+            			</div>
+
+            		</div>
+            		<!-- Countdown dashboard end -->
+
+
+
+
+            		<script language="javascript" type="text/javascript">
+            			jQuery(document).ready(function() {
+            				$('#countdown_dashboard').countDown({
+            					targetDate: {
+            						'day': 		01,
+            						'month': 	1,
+            						'year': 	2014,
+            						'hour': 	00,
+            						'min': 		0,
+            						'sec': 		0
+            					},
+            					// onComplete function
+                                onComplete: function() { $('#nye_message').slideDown() }
+                                
+            				});
+
+            			});
+            		</script>
+
+            	</div>
+            	<div class="nye_message" id="nye_message" style="display: none;">
+        		    Happy New Year!
+
+        		</div>
+                
+            </div>
+          </div>
+          <footer>
+          </footer>
+        </div>
+      </div> <!--! end of .container -->
+    </main> <!--! end of #main -->
+
+  </body>
+</html>
