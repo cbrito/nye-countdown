@@ -1,2 +1,2 @@
-require 'sinatra'
-require 'unicorn'
+gem 'sinatra'
+gem 'unicorn'
