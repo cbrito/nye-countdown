@@ -2,23 +2,44 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Year's Eve Countdown'</title>
+    <title>New Year's Eve Countdown</title>
     <meta name="description" content="New Year's Eve countdown timer for local timezones.">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" 
+        CONTENT="0">    
+        
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script src="assets/js/jquery.lwtCountdown-1.0.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js"></script>
+    
+    <script src="assets/js/jquery.lwtCountdown-1.0.js"></script>
+    <script src="assets/js/jquery.bigtext-0.1.5.js"></script>
+    <script src="assets/js/jquery.fittext-1.1.js"></script>
+    
+    
+        
     
     <link rel="Stylesheet" type="text/css" href="assets/css/dark.css" />
     <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Limelight' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css' />
   </head>
   <body>
-    <header>
       
-    </header>
+    <div class="nye_big_message" id="nye_big_message" style="display: none"> 
+        #HAPPY
+        <br />NEW YEAR   
+    </div>
+    
+    <div class="countdown_explode" id="countdown_explode">
+	   
+	</div>
+
+  
+
     <main role="main">
       <div class="container">
         <div class="content">
@@ -91,29 +112,55 @@
             						'sec': 		0
             					},
             					// onComplete function
-                                onComplete: function() { $('#nye_message').slideDown() }
+                                onComplete: function() { 
+                                    $('#nye_message').slideDown();
+                                    set_happy_ny_message();
+                                }
                                 
             				});
             				
             				
             				
 
-                            function countdown_exploder() { 
+                            function countdown_exploder() {                 				
                                 
-                                // paint the number really big
-                                $("#countdown_explode").html("<font size='100'>59</font>");
-                                $("#countdown_explode").show();
+                                dateStuff = new Date();
+                				if((dateStuff.getMonth() == 11) && 
+                				    (dateStuff.getDate() == 31) &&
+                    				(dateStuff.getHours() == 23) &&
+                    				(dateStuff.getMinutes() == 59)
+                				    ){
+                                    // paint the number really big
+                                    $("#countdown_explode").html(60 - dateStuff.getSeconds());
+                                    $('#countdown_explode').fitText(0.7);
+                                    $("#countdown_explode").show();
                                 
-                                
-                                //explode it
-                                $("#countdown_explode").hide("explode", 
-                                               {pieces: 16 }, 800 );
-                                               
-                                //return true;
-                            }
+                                    //explode it
+                                    $("#countdown_explode").toggle("explode", 900);
+
+                                    
+                                } //endIf
+
+
+                            } //function countdown_exploder()
+                            
+                            function set_happy_ny_message() {
+                                $('#nye_big_message').fitText(0.7);
+                                $('#nye_big_message').show();
+                            } //function set_happy_ny_message()
+
+
                             
                             // When we get to 60 seconds left, do some cool stuff
-            				// window.setInterval(countdown_exploder, 1000);
+            				window.setInterval(countdown_exploder, 1000);
+            				
+            				dateStuff = new Date();
+            				if((dateStuff.getMonth() == 0) && (dateStuff.getDate() == 1)){
+            			        // Show the Happy NY!
+                				set_happy_ny_message();
+            				};
+            				
+                            
             				
       
 
@@ -150,9 +197,7 @@
 
       </div> <!--! end of .container -->
     </main> <!--! end of #main -->
-    <div id="countdown_explode">
-	   
-	</div>
+
 
   </body>
 </html>

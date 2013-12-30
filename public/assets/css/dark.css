@@ -1,12 +1,10 @@
-html, body {
+body {
 	margin: 0;
 	padding: 0;
 	font-family: Tahoma;
-}
-
-body {
 	text-align: center;
 	background-color: #2e2e2e;
+	width: 100%;
 }
 
 h1 {
@@ -29,18 +27,12 @@ a:hover {
 }
 
 #countdown_explode {
-	clear: both;
-	font:  120pt Codystar;
-	text-align: center;
-  position: absolute;
-  top: 25%;
-  left: 25%;
+	font-family:  "Codystar", serif;
+  position: fixed;
 	color: white;
 	width: 100%;
 	height: 100%;
-	margin: 0;
-//  margin-top: -50px;
-//  margin-left: -100px;
+	z-index:1;
 }
 
 #header_title {
@@ -49,6 +41,15 @@ a:hover {
 	margin: 0;
 }
 
+#nye_big_message {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	font-family: 'Futura Condensed Medium', 'Oswald', 'Open Sans Condensed', sans-serif;
+	color: rgb(197,45,53);
+	background-color: white;
+	z-index:1;
+}
 
 #tz_footer {
   position:absolute;
