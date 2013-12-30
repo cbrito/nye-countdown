@@ -3,10 +3,12 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Year's Eve Countdown'</title>
-    <meta name="description" content="New years Eve countdown timer for local timezones.">
+    <meta name="description" content="New Year's Eve countdown timer for local timezones.">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script src="assets/js/jquery.lwtCountdown-1.0.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.4/jstz.min.js"></script>
+    
     <link rel="Stylesheet" type="text/css" href="assets/css/dark.css" />
     <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css' />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet' type='text/css' />
@@ -32,7 +34,7 @@
             		<div id="countdown_dashboard">
             		    
             		    <div id="header_title">
-                            New Years Countdown
+                            New Year's Countdown
                         </div>
                         <p>&nbsp;</p>
             		    
@@ -92,11 +94,36 @@
                                 onComplete: function() { $('#nye_message').slideDown() }
                                 
             				});
+            				
+            				
+            				
+
+                            function countdown_exploder() { 
+                                
+                                // paint the number really big
+                                $("#countdown_explode").html("<font size='100'>59</font>");
+                                $("#countdown_explode").show();
+                                
+                                
+                                //explode it
+                                $("#countdown_explode").hide("explode", 
+                                               {pieces: 16 }, 800 );
+                                               
+                                //return true;
+                            }
+                            
+                            // When we get to 60 seconds left, do some cool stuff
+            				// window.setInterval(countdown_exploder, 1000);
+            				
+      
 
             			});
             		</script>
 
             	</div>
+            	
+
+            	
             	<div class="nye_message" id="nye_message" style="display: none;">
         		    Happy New Year!
 
@@ -123,6 +150,9 @@
 
       </div> <!--! end of .container -->
     </main> <!--! end of #main -->
+    <div id="countdown_explode">
+	   
+	</div>
 
   </body>
 </html>
