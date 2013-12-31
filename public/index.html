@@ -5,8 +5,7 @@
     <title>New Year's Eve Countdown</title>
     <meta name="description" content="New Year's Eve countdown timer for local timezones.">
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-    <META HTTP-EQUIV="EXPIRES" 
-        CONTENT="0">    
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">    
         
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -59,13 +58,13 @@
                         </div>
                         <p>&nbsp;</p>
             		    
-            			<div class="dash weeks_dash">
+            			<div id="weeks_dash" class="dash weeks_dash">
             				<span class="dash_title">weeks</span>
             				<div class="digit">0</div>
             				<div class="digit">0</div>
             			</div>
 
-            			<div class="dash days_dash">
+            			<div id="days_dash" class="dash days_dash">
             				<span class="dash_title">days</span>
             				<div class="digit">0</div>
             				<div class="digit">0</div>
@@ -154,8 +153,17 @@
                             // When we get to 60 seconds left, do some cool stuff
             				window.setInterval(countdown_exploder, 1000);
             				
+            				
+            				// Handle some page startup layout special cases
             				dateStuff = new Date();
-            				if((dateStuff.getMonth() == 0) && (dateStuff.getDate() == 1)){
+            				
+            				if((dateStuff.getMonth() == 11) &&
+            				    (dateStuff.getDate() == 31)) {
+            				    // Hide the weeks and days countdown
+            				    $("#weeks_dash").hide();
+            				    $("#days_dash").hide();
+            				}
+            				else if((dateStuff.getMonth() == 0) && (dateStuff.getDate() == 1)){
             			        // Show the Happy NY!
                 				set_happy_ny_message();
             				};
